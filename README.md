@@ -52,5 +52,5 @@ Compile the file
     "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe" Program.cs -out:FodHlp_Elv.exe
 
 ## Update feburary 2024
-After executing the app 3 times actually Defender warns of a malware and remove the file. Recompiling the file and performing a scan with Defender yet nothing is found, so probably
+After executing the app 3 times actually Defender warns of a malware and eventually remove it, but the shell is spawned yet. Recompiling the file and performing a scan with Defender yet nothing is found, so probably
 a behavioral blocking takes place, need to investigate deeper the matter.
