@@ -35,8 +35,12 @@ Investigating further it seems that Defender will block any value containig the 
 it should be quite easy indeed since the .exe string seems to be allowed.
 So for this POC I created a C# console app that performs the following actions once executed:
 1. Set the registry keys
-2. Set the value for the Default key to execute itself, passing a random paramiter (you can pass what you want). So for istance, assuming that the name of the app is FodHlp_Elv.exe and that it is executed from the folder C:\Users\Public, the value set will be<b>C:\Users\Public\FodHlp_Elv.exe 0</b>
-3. Execute FodHelper.exe, that will execute our app passing a parameter. If the app recive a parameter it will execute the payload, in our case the infamous CMD.exe :)
+2. Set the value for the Default key to execute itself, passing a random paramiter (you can pass what you want). So for istance, assuming that the name of the app is FodHlp_Elv.exe and that it is executed from the folder C:\Users\Public, the value set will be <b>C:\Users\Public\FodHlp_Elv.exe 0</b>
+3. Execute FodHelper.exe, that will execute our app passing a parameter. If the app recive a parameter it will execute the payload, in our case a powershell or cmd shell.
+
+So if you execute the app without any parameter it will set up the registry keys, indeed if you pass a parameter it will execute the shell. The workflow is:
+
+Set up the registry --> Call FodHelper{Execute the app passing a paramter} --> Execute the shell
 
 Actually Defender will warn us that need to scan the file, but the execution is not prevented (of course at the moment: January 2024, as we can see we got an elevated shell.
 
