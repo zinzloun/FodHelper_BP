@@ -2,7 +2,8 @@
 
 ![Eh....già](ehgia.png)
 
-I thought that Windows managed to solve this weakness, I wouldnt call it a proper vulnerability even if is a slight difference in this context. The matter regards UAC and related IL, if you dont' know the subject I suggest to have a look at https://www.cobaltstrike.com/blog/user-account-control-what-penetration-testers-should-know.
+I thought that Microsoft managed to solve this weakness, even if in my opinion, MS has not treated it as a proper vulnerability.
+The matter regards UAC and related IL, if you dont' know the subject I suggest to have a look at https://www.cobaltstrike.com/blog/user-account-control-what-penetration-testers-should-know.
 Here I'm going to test the weakness in a Windows 11 machine, having Defender updated ad activated. If you search the Internet for <b>fodhelper</b>, you will find a lot of intersting explanation and some PS script ready to use. Anyway I decided to try my own implementation in C#, mainly for fun, but actually there is another reasono that we will see. Just keep reading.
 
 ## A brief explanation of the test scenario
