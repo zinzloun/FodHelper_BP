@@ -17,8 +17,8 @@ Let's look what happens opening the good old notepad:
 Here I have opened 2 istances of notepad, the second (orange) has been run as an Administrator, of course the UAC pop up asked to confirm. What does it means? It means that even if we have compromised a system with an administrative account, probably having a shell, this shell will run with a medium IL, preventig us to perform actions that requires high IL.
 
 It comes in help, as the name implies :), FodHelper.exe. This techinique is quite old: https://winscripting.blog/2017/05/12/first-entry-welcome-and-uac-bypass, but as we will see, still working.
-FodHelper is one of those windows programs that are allowed to run with an high IL, without requiring the user's interaction This is possible thanks to a feature called auto elevation. Here there is a non-exhaustive list of auto-elevating applications in Windows 10: https://gist.github.com/TheWover/b5a340b1cac68156306866ff24e5934c.
-The process is very well explained, but to cut the long story short, once executed FodHelper searches for 2 keys in the user registry:
+FodHelper is one of those windows programs that are allowed to run with an high IL, without requiring the user's interaction. This is possible thanks to a feature called auto elevation. Here there is a non-exhaustive list of auto-elevating applications in Windows 10: https://gist.github.com/TheWover/b5a340b1cac68156306866ff24e5934c.
+The process is very well explained in the win scripting blog, but to cut the long story short, once executed FodHelper searches for 2 keys in the user registry:
 - HKCU:\Software\Classes\ms-settings\shell\open\command\DelegateExecute
 - HKCU:\Software\Classes\ms-settings\shell\open\command\(Default)
 
