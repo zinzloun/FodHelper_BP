@@ -1,3 +1,8 @@
+/* Compile
+
+"C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe" ProgramNG.cs -out:FodHlpElv_NG.exe
+
+*/
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Reflection;
@@ -57,7 +62,7 @@ namespace FodhelperSet
 
         public static void l(string a, bool b)
         {
-            	var proc1 = new ProcessStartInfo();
+            	ProcessStartInfo proc1 = new ProcessStartInfo();
             	proc1.UseShellExecute = b; //https://stackoverflow.com/questions/3596259/elevating-privileges-doesnt-work-with-useshellexecute-false
 		proc1.LoadUserProfile = true;
             	proc1.FileName = a;
