@@ -11,7 +11,7 @@ namespace FodhelperSet
         static void Main(string[] args)
         {
 			
-		string curver = ".fdhlp.shl";		
+	    string curver = ".fdhlp.shl";		
 			
 			
             if (args.Length == 0)
