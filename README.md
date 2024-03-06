@@ -63,7 +63,7 @@ explained in this post: https://v3ded.github.io/redteam/utilizing-programmatic-i
 
 ProgID (programmatic identifier) is a registry entry that can be associated with a Class ID (CLSID ), a global unique identifier for COM (Component Object Model) class object. The ProgID is basically a string such as <i>my-application.xxxxx</i> that represents a CLSID such as <i>{F9043C85-F6F2-101A-A3C9-08002B2F49FB}</i>. More information can be read at: https://learn.microsoft.com/en-us/windows/win32/shell/fa-progids.
 One of the subkeys that can be set in ProgID is CurVer. CurVer entry is used to set the default version of a COM application, if multiple other versions are found on the system, e.g. set version 1.2 of my-application.xxxxx as default over version 1.1.
-We can abuse this feature to make a temporary version of the <b>Shell subkey</b> to point to our malicious app (this assembly), then we can set the CurVer subkery in <b>ms-settings</b> with the value corresponding to the ProgID string. It could be sound a bit complicated in theory, but if you look at the [code](ProgramNG.cs), it will be more understandable.
+We can abuse this feature to make a temporary version of the <b>Shell subkey</b> to point to our malicious app (this assembly), then we can set the CurVer subkery in <b>ms-settings</b> with the value corresponding to the ProgID string. It could be sound a bit complicated in theory, but if you look at the [code](programNG.cs), it will be more understandable.
 You can compile the code as follows:
 
     "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe" ProgramNG.cs -out:FodHlpElv_NG.exe
