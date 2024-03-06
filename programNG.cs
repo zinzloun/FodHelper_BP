@@ -11,7 +11,7 @@ namespace FodhelperSet
         static void Main(string[] args)
         {
 			
-		string curver = f();		
+		string curver = ".fdhlp.shl";		
 			
 			
             if (args.Length == 0)
@@ -53,13 +53,6 @@ namespace FodhelperSet
 
             }           
         }
-		
-	//get a random string
-	public static string f()
-	{
-		string path = System.IO.Path.GetRandomFileName();
-		return path.Substring(4);
-	}
 		
 
         public static void l(string a, bool b)
