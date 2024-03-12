@@ -59,12 +59,27 @@ Eventually comes <b>ProgID</b>
 After searching a bit I found that the it is possible to completely bypass Defender (of course, at the moment of writing), using different registry key, precisely CurVer (that we can guess it means Current version). The idea is very well
 explained in this post: https://v3ded.github.io/redteam/utilizing-programmatic-identifiers-progids-for-uac-bypasses, and can be summarized as follows:
 
-ProgID (programmatic identifier) is a registry entry that can be associated with a Class ID (CLSID ), a global unique identifier for COM (Component Object Model) class object. The ProgID is basically a string such as <i>my-application.xxxxx</i> that represents a CLSID such as <i>{F9043C85-F6F2-101A-A3C9-08002B2F49FB}</i>. More information can be read at: https://learn.microsoft.com/en-us/windows/win32/shell/fa-progids.
+ProgID (programmatic identifier) is a registry entry that can be associated with a Class ID (CLSID ), a global unique identifier for COM (Component Object Model) class object. The ProgID is basically a string such as <i>.my-application.xxxxx</i> that represents a CLSID such as <i>{F9043C85-F6F2-101A-A3C9-08002B2F49FB}</i>. More information can be read at: https://learn.microsoft.com/en-us/windows/win32/shell/fa-progids.
 One of the subkeys that can be set in ProgID is CurVer. CurVer entry is used to set the default version of a COM application, if multiple other versions are found on the system, e.g. set version 1.2 of my-application.xxxxx as default over version 1.1.
 We can abuse this feature to make a temporary version of the <b>Shell subkey</b> to point to our malicious app (this assembly), then we can set the CurVer subkery in <b>ms-settings</b> with the value corresponding to the ProgID string. It could be sound a bit complicated in theory, but if you look at the [code](programNG.cs), it will be more understandable.
 You can compile the code as follows:
 
     "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe" ProgramNG.cs -out:FodHlpElv_NG.exe
+
+## Second update march 2024
+The compiled exe is detected
+I have found that you can accomplish the fodhelper bypass using batch commands, of course it doesn't help too much since it is clear text, compiling the batch to exe using some well known tools\techniques is flagged by Defender. I found that encrypting the commands batch as a string inside a Powershell script is not detected. The workflow is the following:
+
+1. Encrypt the batch commands inside a PS script using a secret key: the output is an encrypted string
+2. Put the encrypted batch command string inside a variable in a second PS script. This is the actual malicious script to be deployed to the victim. Execute the script passing the key as a console parameter
+3. Upon the execution the batch commands are decrypted and saved on the current directory as cmd file
+4. The malicious script execute the batch
+5. The batch make the registry changes and execute fodhelper: a cmd shell with system prvileges should be executed
+6. The batch file delete himself
+7. The malicious PS delete himself
+
+As soon as possible I'll publish some code
+
 
 
 
