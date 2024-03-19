@@ -67,14 +67,14 @@ You can compile the code as follows:
     "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe" ProgramNG.cs -out:FodHlpElv_NG.exe
 
 ## Second update march 2024
-The compiled exe is detected
-I have found that you can accomplish the fodhelper bypass using batch commands, of course it doesn't help too much since it is clear text, compiling the batch to exe using some well known tools\techniques is flagged by Defender. I found that encrypting the commands batch as a string inside a Powershell script is not detected. The workflow is the following:
+The compiled exe is detected,
+I have found that you can accomplish the fodhelper bypass using batch commands, of course it doesn't help too much since the commands are in clear text, compiling the batch to exe using some well known tools\techniques is flagged by Defender. I found that encrypting the commands batch as a string inside a Powershell script is not detected. The workflow is the following:
 
 1. Encrypt the batch commands inside a PS script using a secret key: the output is an encrypted string
 2. Put the encrypted batch command string inside a variable in a second PS script. This is the actual malicious script to be deployed to the victim. Execute the script passing the key as a console parameter
 3. Upon the execution the batch commands are decrypted and saved on the current directory as cmd file
 4. The malicious script execute the batch
-5. The batch make the registry changes and execute fodhelper: a cmd shell with system prvileges should be executed
+5. The batch make the registry changes and execute fodhelper: a cmd shell with system prvileges should be spawned
 6. The batch file delete himself
 7. The malicious PS delete himself
 
